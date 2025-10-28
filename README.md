@@ -89,7 +89,6 @@ docker build -t notifier .
 
 # Run the notifier using the Docker image
 docker run -v $(pwd)/config.yml:/app/config.yml notifier send --title "Hello" --body "This is a test" --channel "info"
-=======
 Once you have set up your `.env` file with the necessary `APPRISE_URLS` and `LOKI_URL`, you can send notifications.
 
 ### Running the Example

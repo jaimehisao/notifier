@@ -15,3 +15,4 @@ ENV NAME Notifier
 
 # Run notifier.py when the container launches
 ENTRYPOINT ["python", "notifier.py"]
+CMD ["--help"]
