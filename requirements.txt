@@ -1,3 +1,5 @@
 apprise
 python-logging-loki
 python-dotenv
+click
+PyYAML
