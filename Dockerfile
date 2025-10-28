@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV NAME Notifier
 
 # Run notifier.py when the container launches
-CMD ["python", "notifier.py"]
+ENTRYPOINT ["python", "notifier.py"]

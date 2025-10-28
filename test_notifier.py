@@ -2,6 +2,44 @@ import unittest
 from unittest.mock import patch, MagicMock
 import os
 import notifier
+from click.testing import CliRunner
+
+class TestNotifier(unittest.TestCase):
+
+    def setUp(self):
+        self.runner = CliRunner()
+        # Create a dummy config file for testing
+        with open('test_config.yml', 'w') as f:
+            f.write("""
+channels:
+  info:
+    - mailto://user:pass@gmail.com
+  warnings:
+    - tgram://bottoken/chatid
+""")
+
+    def tearDown(self):
+        os.remove('test_config.yml')
+
+    @patch('notifier.send_notification')
+    def test_cli_send_success(self, mock_send_notification):
+        """
+        Test that the CLI send command calls send_notification with the correct arguments.
+        """
+        result = self.runner.invoke(notifier.cli, [
+            'send',
+            '--title', 'Test Title',
+            '--body', 'Test Body',
+            '--channel', 'info',
+            '--config', 'test_config.yml'
+        ])
+        self.assertEqual(result.exit_code, 0)
+        mock_send_notification.assert_called_once_with(
+            'Test Title',
+            'Test Body',
+            ['mailto://user:pass@gmail.com']
+        )
+
 
 class TestNotifier(unittest.TestCase):
 
