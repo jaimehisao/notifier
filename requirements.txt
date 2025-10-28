@@ -3,3 +3,4 @@ python-logging-loki
 python-dotenv
 click
 PyYAML
+python-dotenv
