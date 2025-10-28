@@ -1,0 +1,15 @@
+# Notifier Configuration
+
+# This file defines the notification channels for the notifier application.
+# Each channel is a list of Apprise URLs.
+# See the Apprise documentation for a full list of supported services and URL formats:
+# https://github.com/caronc/apprise
+
+channels:
+  info:
+    - mailto://user:pass@gmail.com
+  warnings:
+    - tgram://bottoken/chatid
+  critical:
+    - slack://tokenA/tokenB/tokenC
+    - mailto://user:pass@gmail.com

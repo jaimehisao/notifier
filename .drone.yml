@@ -1,0 +1,25 @@
+kind: pipeline
+type: docker
+name: notifier
+
+steps:
+- name: test
+  image: python:3.8-slim
+  commands:
+  - pip install -r requirements.txt
+  - python -m unittest test_notifier.py
+
+- name: publish
+  image: plugins/docker
+  settings:
+    repo: registry.lab.hisao.org/notifier
+    registry: registry.lab.hisao.org
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+    - main
+    event:
+    - push
