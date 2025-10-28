@@ -33,10 +33,6 @@ def load_config(config_path='config.yml'):
         print(f"Error parsing YAML file: {e}")
         return None
 
-    logger = logging.getLogger("notifier")
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
-
 def send_notification(title, body, urls):
     """
     Sends a notification to the specified Apprise URLs.
@@ -91,14 +87,3 @@ def send(title, body, channel, config):
 
 if __name__ == '__main__':
     cli()
-if __name__ == '__main__':
-    # Example usage:
-    # Set the APPRISE_URLS environment variable to a comma-separated list of Apprise URLs.
-    # For example: "mailto://user:pass@gmail.com,tgram://bottoken/chatid"
-    # Set the LOKI_URL environment variable to your Loki instance's push API endpoint.
-    # For example: "http://localhost:3100/loki/api/v1/push"
-    apprise_urls = os.getenv("APPRISE_URLS", "").split(",")
-    if apprise_urls and apprise_urls != ['']:
-        send_notification("Test Notification", "This is a test notification.", apprise_urls)
-    else:
-        print("APPRISE_URLS environment variable not set.")

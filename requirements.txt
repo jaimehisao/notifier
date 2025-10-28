@@ -3,6 +3,3 @@ python-logging-loki
 python-dotenv
 click
 PyYAML
-PyYAML
-PyYAML
-python-dotenv

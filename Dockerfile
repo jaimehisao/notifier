@@ -10,9 +10,6 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Define environment name
-ENV NAME Notifier
-
 # Run notifier.py when the container launches
 ENTRYPOINT ["python", "notifier.py"]
 CMD ["--help"]
